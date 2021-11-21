@@ -7,7 +7,7 @@
 </head>
 <body>
 
-<img src="MeteoriteImg" width="300" height="84" alt="Canyon Diablo meteorite with a whistle-hole" by subarcticmike is licensed under CC BY 2.0">
+<img src="MeteoriteImg.jpg" width="300" height="84" alt="Canyon Diablo meteorite with a whistle-hole" by subarcticmike is licensed under CC BY 2.0">
 
 	<h1>Meteorite Landings</h1>
 
