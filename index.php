@@ -123,8 +123,8 @@ print("<tr><th>Name</th><th>ID</th><th>Mass</th><th>Discovery</th><th>Year</th><
 
 foreach ($results as $value)
 {
-	$link='https://www.google.com/maps/@'.$value['Latitude'].','.$value['Longitude'].',13.09z';
-  print("<tr><td>".$value['Name']."</td><td>".$value['ID']."</td><td>".$value['Mass']."</td><td>".$value['Discovery']."</td><td>".$value['Year']."</td><td>".$value['Latitude']."</td><td>".$value['Longitude']."</td><td><a href=\"$link\">Click to see</a></td></tr>\n");
+	$link='https://www.google.com/maps?q='.$value['Latitude'].','.$value['Longitude'].'&ll='.$value['Latitude'].','.$value['Longitude'].'&z=5';
+  print("<tr><td>".$value['Name']."</td><td>".$value['ID']."</td><td>".$value['Mass']."</td><td>".$value['Discovery']."</td><td>".$value['Year']."</td><td>".$value['Latitude']."</td><td>".$value['Longitude']."</td><td><a href=\"$link\" target='_blank'>Click to see</a></td></tr>\n");
 }
 print("</table>\n");
 ?>
