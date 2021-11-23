@@ -79,5 +79,11 @@ td {
 	border-width:thin;
 }
 
+h4 {
+	font-weight : bold;
+	text-shadow: 2px 2px #ff0000;
+}
+
+
 /* EoF */
 
