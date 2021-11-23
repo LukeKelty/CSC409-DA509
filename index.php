@@ -95,8 +95,64 @@ print("<p>Maximum</p><br>");
 print ("<input type=\"text\" name=\"Massmax\" value=\"".$massmax."\"><br>\n");
 $filter_mass= 'Mass <='.$massmax.' AND Mass >='.$massmin;
 
+									
+/*Sorted by filter*/
+print ("</select><br>\n");
+print("<label>Sorted by</label><br>\n");
+if(isset($_POST['Sort']))
+{
+    if($_POST['Sort'] == 'Name'){
+      $sort_filter = 'ORDER BY Name';
+      print("<input type=\"radio\" name=\"Sort\" value=\"Year\">Year<br>\n");
+      print("<input type=\"radio\" name=\"Sort\" value=\"Mass\">Mass<br>\n");
+      print("<input type=\"radio\" name=\"Sort\" value=\"Name\" checked>Name<br>\n");
+    }
+    if($_POST['Sort'] == 'Mass')
+    {
+      $sort_filter = 'ORDER BY Mass';
+      print("<input type=\"radio\" name=\"Sort\" value=\"Year\">Year<br>\n");
+      print("<input type=\"radio\" name=\"Sort\" value=\"Mass\" checked>Mass<br>\n");
+      print("<input type=\"radio\" name=\"Sort\" value=\"Name\">Name<br>\n");
+    }
+    if($_POST['Sort'] == 'Year')
+    {
+      $sort_filter = 'ORDER BY Year';
+      print("<input type=\"radio\" name=\"Sort\" value=\"Year\" checked>Year<br>\n");
+      print("<input type=\"radio\" name=\"Sort\" value=\"Mass\">Mass<br>\n");
+      print("<input type=\"radio\" name=\"Sort\" value=\"Name\">Name<br>\n");
+    }
+}
+else
+{
+  $sort_filter = 'ORDER BY Name';
+  print("<input type=\"radio\" name=\"Sort\" value=\"Year\">Year<br>\n");
+  print("<input type=\"radio\" name=\"Sort\" value=\"Mass\">Mass<br>\n");
+  print("<input type=\"radio\" name=\"Sort\" value=\"Name\" checked>Name<br>\n");
+}
+/*Order filter*/
+print ("</select><br>\n");
+print("<label>Order</label><br>\n");
+if(isset($_POST['Order'])){
+    if ($_POST['Order'] == 'Ascending'){
+      $order_filter='ASC';
+      print("<input type=\"radio\" name=\"Order\" value=\"Ascending\" checked>Ascending<br>\n");
+      print("<input type=\"radio\" name=\"Order\" value=\"Descending\">Descending<br>\n");
+    }
+    if ($_POST['Order'] == 'Descending'){
+      $order_filter='DESC';
+      print("<input type=\"radio\" name=\"Order\" value=\"Ascending\">Ascending<br>\n");
+      print("<input type=\"radio\" name=\"Order\" value=\"Descending\" checked>Descending<br>\n");
+    }
 
-$finalQuery = 'SELECT * FROM meteorite WHERE ('.$filter_discovery.') AND ('.$filter_year.') AND ('.$filter_mass.')';
+}
+else{
+  $order_filter='ASC';
+  print("<input type=\"radio\" name=\"Order\" value=\"Ascending\" checked>Ascending<br>\n");
+  print("<input type=\"radio\" name=\"Order\" value=\"Descending\">Descending<br>\n");
+}
+
+
+$finalQuery = 'SELECT * FROM meteorite WHERE ('.$filter_discovery.') AND ('.$filter_year.') AND ('.$filter_mass.') '.$sort_filter.' '.$order_filter.'';
 
 print ("<input type=\"submit\" value=\"Filter\">\n");
 print ("\n<input type=\"button\" onclick=\"window.location.replace('index.php')\" value=\"Reset\"><br>\n");
