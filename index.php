@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-	<title>Meteorite Landings</title>
-	<link rel="stylesheet" href="styles.css">
+  <title>Meteorite Landings</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<img src="MeteoriteImg.jpg" width="300" height="84" alt="Canyon Diablo meteorite with a whistle-hole" by subarcticmike is licensed under CC BY 2.0">
+<img src="MeteoriteImg.jpeg" width="300" height="150" alt="Canyon Diablo meteorite with a whistle-hole" by subarcticmike is licensed under CC BY 2.0">
 
-	<h1>Meteorite Landings</h1>
+  <h1>Meteorite Landings</h1>
 
 <p>Meet the Team: <a href="pages/home.html">Click Here!</a></p>
 <p>Source: <a href="https://catalog.data.gov/dataset/meteorite-landings">Data.gov</a></p>
@@ -32,24 +32,24 @@ if(isset($_POST['Discovery']))
       print("<input type=\"radio\" name=\"Discovery\" value=\"Both\" checked>Both<br>\n");
     }
     if($_POST['Discovery'] == 'Found')
-  	{
-  		$filter_discovery = 'Discovery LIKE \'Found\'';
+    {
+      $filter_discovery = 'Discovery LIKE \'Found\'';
       print("<input type=\"radio\" name=\"Discovery\" value=\"Fell\">Fell<br>\n");
       print("<input type=\"radio\" name=\"Discovery\" value=\"Found\" checked>Found<br>\n");
       print("<input type=\"radio\" name=\"Discovery\" value=\"Both\" >Both<br>\n");
-  	}
-  	if($_POST['Discovery'] == 'Fell')
-  	{
-  		$filter_discovery = 'Discovery LIKE \'Fell\'';
-  		print("<input type=\"radio\" name=\"Discovery\" value=\"Fell\" checked>Fell<br>\n");
+    }
+    if($_POST['Discovery'] == 'Fell')
+    {
+      $filter_discovery = 'Discovery LIKE \'Fell\'';
+      print("<input type=\"radio\" name=\"Discovery\" value=\"Fell\" checked>Fell<br>\n");
       print("<input type=\"radio\" name=\"Discovery\" value=\"Found\">Found<br>\n");
       print("<input type=\"radio\" name=\"Discovery\" value=\"Both\" >Both<br>\n");
-  	}
+    }
 }
 else
 {
-	$filter_discovery = 'Discovery LIKE \'%\'';
-	print("<input type=\"radio\" name=\"Discovery\" value=\"Fell\">Fell<br>\n");
+  $filter_discovery = 'Discovery LIKE \'%\'';
+  print("<input type=\"radio\" name=\"Discovery\" value=\"Fell\">Fell<br>\n");
   print("<input type=\"radio\" name=\"Discovery\" value=\"Found\">Found<br>\n");
   print("<input type=\"radio\" name=\"Discovery\" value=\"Both\" checked>Both<br>\n");
 }
@@ -76,7 +76,7 @@ $filter_year= 'Year <='.$yearmax.' AND Year >='.$yearmin;
 
 
 /*Mass Filter*/
-print("<label>Mass</label><br>\n");
+print("<label>Mass (g)</label><br>\n");
 if(filter_var($_POST['Massmin'], FILTER_VALIDATE_FLOAT)==False){
   $massmin = 0.0;
 }
@@ -95,7 +95,6 @@ print("<p>Maximum</p><br>");
 print ("<input type=\"text\" name=\"Massmax\" value=\"".$massmax."\"><br>\n");
 $filter_mass= 'Mass <='.$massmax.' AND Mass >='.$massmin;
 
-									
 /*Sorted by filter*/
 print ("</select><br>\n");
 print("<label>Sorted by</label><br>\n");
@@ -167,19 +166,19 @@ $dbfile = null;
 $resultsCount = count($results);
 if ($resultsCount <= 1)
 {
-	print("<p class=\"resultsCount\">$resultsCount result</p>\n");
+  print("<p class=\"resultsCount\"><br>$resultsCount result</p>\n");
 }
 else
 {
-	print("<p class=\"resultsCount\">$resultsCount results</p>\n");
+  print("<p class=\"resultsCount\"><br>$resultsCount results</p>\n");
 }
 
 print("<table>\n");
-print("<tr><th>Name</th><th>ID</th><th>Mass</th><th>Discovery</th><th>Year</th><th>Latitude</th><th>Longitude</th><th>See location</th></tr>\n");
+print("<tr><th>Name</th><th>ID</th><th>Mass (g)</th><th>Discovery</th><th>Year</th><th>Latitude</th><th>Longitude</th><th>See location</th></tr>\n");
 
 foreach ($results as $value)
 {
-	$link='https://www.google.com/maps?q='.$value['Latitude'].','.$value['Longitude'].'&ll='.$value['Latitude'].','.$value['Longitude'].'&z=5';
+  $link='https://www.google.com/maps?q='.$value['Latitude'].','.$value['Longitude'].'&ll='.$value['Latitude'].','.$value['Longitude'].'&z=5';
   print("<tr><td>".$value['Name']."</td><td>".$value['ID']."</td><td>".$value['Mass']."</td><td>".$value['Discovery']."</td><td>".$value['Year']."</td><td>".$value['Latitude']."</td><td>".$value['Longitude']."</td><td><a href=\"$link\" target='_blank'>Click to see</a></td></tr>\n");
 }
 print("</table>\n");
