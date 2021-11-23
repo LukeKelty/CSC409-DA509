@@ -17,9 +17,11 @@ p {
 
 /* form style */
 fieldset {
-	margin-bottom:15px;
-	margin-left:10%;
-	margin-right:10%;
+	font-size:12px;
+  	padding:10px;
+  	width:250px;
+  	line-height:1.8;
+	background-color:white;
 }
 
 input[type=submit] {
